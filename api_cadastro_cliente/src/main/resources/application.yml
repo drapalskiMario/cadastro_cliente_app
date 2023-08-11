@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-app-cliente:5432/cadastro_cliente
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update

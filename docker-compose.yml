@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres-app-cliente:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: cadastro_cliente
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+
+  spring-app-cliente:
+    build:
+      context: ./api_cadastro_cliente
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-app-cliente
+
+  react-app-cliente:
+    build:
+      context: ./client_cadastro_cliente
+    ports:
+      - "3000:3000"
+    depends_on:
+      - spring-app-cliente
